@@ -2,9 +2,10 @@ import CanvasLoader from "../CanvasLoader"
 import { Suspense, useRef, useEffect, useState } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { OrbitControls, useGLTF, Preload } from "@react-three/drei"
+import { Mesh } from "three"
 
 function Earth() {
-    const earthRef = useRef<any>()
+    const earthRef = useRef<Mesh>(null)
     const Earth = useGLTF("./planet/scene.gltf")
     useFrame(() => {
         if (earthRef.current) {

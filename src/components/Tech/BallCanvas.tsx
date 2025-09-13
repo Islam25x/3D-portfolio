@@ -3,7 +3,11 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import CanvasLoader from "../CanvasLoader";
 
-const Ball = ({ imgUrl }) => {
+interface BallProps {
+    imgUrl: string; 
+}
+
+const Ball = ({ imgUrl }: BallProps) => {
     const [decal] = useTexture([imgUrl]);
 
     return (
@@ -17,7 +21,11 @@ const Ball = ({ imgUrl }) => {
     );
 };
 
-function BallCanvas({ icon }:any) {
+interface BallCanvasProps {
+    icon: string;  
+}
+
+function BallCanvas({ icon }: BallCanvasProps) {
     return (
         <Canvas frameloop="demand" dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
             <Suspense fallback={<CanvasLoader />}>
