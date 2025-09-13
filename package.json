@@ -1,0 +1,47 @@
+{
+  "name": "package.json",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@react-three/drei": "^10.7.3",
+    "@react-three/fiber": "^9.3.0",
+    "@tailwindcss/vite": "^4.1.12",
+    "aos": "^2.3.4",
+    "framer-motion": "^12.23.12",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-parallax-tilt": "^1.7.305",
+    "react-scroll": "^1.9.3",
+    "react-simple-typewriter": "^5.0.1",
+    "react-toastify": "^11.0.5",
+    "react-vertical-timeline-component": "^3.5.3",
+    "tailwindcss": "^4.1.12",
+    "three": "^0.179.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@types/aos": "^3.0.7",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@types/react-router-hash-link": "^2.4.9",
+    "@types/react-scroll": "^1.8.10",
+    "@types/react-toastify": "^4.0.2",
+    "@types/three": "^0.179.0",
+    "@vitejs/plugin-react-swc": "^4.0.0",
+    "eslint": "^9.33.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.39.1",
+    "vite": "^7.1.2"
+  }
+}
