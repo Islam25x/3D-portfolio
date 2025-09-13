@@ -18,7 +18,7 @@ function Earth() {
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth < 640) {
-                setScale(1); // موبايل
+                setScale(2.5); // موبايل
             } else if (window.innerWidth < 1024) {
                 setScale(1.2); // تابلت
             } else {
