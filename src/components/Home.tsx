@@ -33,6 +33,16 @@ function Home() {
                                 I turn ideas into production-ready web apps <br className="sm:block hidden" />
                                 built with React, TypeScript & clean architecture
                             </p>
+                            <a
+                                href="https://wa.me/201004791339?text=Hi%20Islam,%20I%20saw%20your%20portfolio"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex mt-6 bg-tertiary py-3 px-8 rounded-xl w-fit text-white font-bold shadow-md shadow-primary cursor-pointer transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50 hover:bg-[#915EFF]"
+                                data-aos="fade-up"
+                                data-aos-delay="750"
+                            >
+                                Let's Talk
+                            </a>
                         </div>
                     </div>
 
