@@ -31,7 +31,7 @@ function Home() {
                                 data-aos="fade-up"
                                 data-aos-delay="600"
                             >
-                                I turn ideas into production-ready web apps <br className="sm:block hidden" />
+                                I build fast, scalable web apps that actually ship. <br className="sm:block hidden" />
                                 built with React, TypeScript & clean architecture
                             </p>
                             <a
@@ -61,6 +61,8 @@ function Home() {
                                 src={avatar}
                                 alt="Islam avatar"
                                 className="relative z-10 w-[360px] sm:w-[460px] md:w-[600px] lg:w-[760px] xl:w-[880px] h-auto object-contain drop-shadow-[0_30px_60px_rgba(110,78,255,0.35)]"
+                                data-aos="fade-left"
+                                data-aos-delay="650"
                             />
                         </div>
                     </div>
