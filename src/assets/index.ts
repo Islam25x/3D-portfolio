@@ -22,6 +22,7 @@ import homeless from "./Homeless.png";
 import Exclusive from "./e-commerce.png";
 import Atmoscan from "./weather app.png";
 import VivaDecor from "./VivaDecor.png";
+import avatar from "./avatar.png";
 
 export {
   linkDev,
@@ -47,4 +48,5 @@ export {
   Exclusive,
   Atmoscan,
   VivaDecor,
+  avatar,
 };
