@@ -17,13 +17,18 @@ function About() {
                 <p className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]">
                     <Typewriter
                         words={[
-                            "I'm a skilled software developer with experience in TypeScript and JavaScript, and expertise in frameworks like React, Next.js, and Three.js. I'm a quick learner and collaborate closely with clients to create efficient, scalable, and user-friendly solutions that solve real-world problems. Let's work together to bring your ideas to life!"
+                            "I turn ideas into real web applications.",
+                            "Scalable SaaS dashboards built for production.",
+                            "Powered by React & TypeScript.",
+                            "Fast. Clean. User-focused.",
+                            "Let’s build something that actually works.",
                         ]}
-                        loop={false}
+                        loop={true}
                         cursor
                         cursorStyle="|"
-                        typeSpeed={40}
-                        deleteSpeed={0}
+                        typeSpeed={45}
+                        deleteSpeed={20}
+                        delaySpeed={1800}
                     />
                 </p>
             </div>

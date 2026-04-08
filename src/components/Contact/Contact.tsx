@@ -96,7 +96,7 @@ const Contact: React.FC = () => {
                                 name="name"
                                 value={form.name}
                                 onChange={handleChange}
-                                placeholder="What's your good name?"
+                                placeholder="Your name"
                                 className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
                             />
                         </label>
@@ -108,7 +108,7 @@ const Contact: React.FC = () => {
                                 name="email"
                                 value={form.email}
                                 onChange={handleChange}
-                                placeholder="What's your web address?"
+                                placeholder="Your email address"
                                 className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
                             />
                         </label>
@@ -120,7 +120,7 @@ const Contact: React.FC = () => {
                                 name="message"
                                 value={form.message}
                                 onChange={handleChange}
-                                placeholder="What you want to say?"
+                                placeholder="Describe your idea, requirements, or what you need help with..."
                                 className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
                             />
                         </label>

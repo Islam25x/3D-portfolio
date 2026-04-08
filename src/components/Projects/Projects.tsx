@@ -19,19 +19,23 @@ function Projects() {
                 <p className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]">
                     <Typewriter
                         words={[
-                            "Following projects showcase my skills and experience through real-world examples of my work. Each project is briefly described with links to code repositories and live demos in it. It reflects my ability to solve complex problems, work with different technologies, and manage projects effectively."
+                            "Real projects. Real results.",
+                            "Each one solves a real problem — not just UI.",
+                            "Built with scalable architecture and clean code.",
+                            "Live demos. Source code. Full transparency.",
+                            "Explore the work — and imagine yours next.",
                         ]}
                         loop={false}
                         cursor
                         cursorStyle="|"
-                        typeSpeed={30}
+                        typeSpeed={35}
                         deleteSpeed={0}
                     />
                 </p>
             </div>
 
             {/* Project cards */}
-            <div className="mt-20 flex flex-wrap justify-center gap-7">
+            <div className="mt-10 flex flex-wrap justify-center gap-7">
                 {projects.map((project, i) => (
                     <div
                         key={project.name}
@@ -40,7 +44,7 @@ function Projects() {
                         className="w-full sm:w-[80%] md:w-[360px] p-2"
                     >
                         <Tilt
-                            scale={1.05} 
+                            scale={1.05}
                             tiltMaxAngleX={45}
                             tiltMaxAngleY={45}
                             transitionSpeed={450}

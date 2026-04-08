@@ -30,8 +30,8 @@ function Home() {
                         data-aos="fade-up"
                         data-aos-delay="600"
                     >
-                        I`m a front end developer <br className="sm:block hidden" />
-                        with experience in React.js and Three.js
+                        I turn ideas into production-ready web apps <br className="sm:block hidden" />
+                        built with React, TypeScript & clean architecture
                     </p>
                 </div>
             </div>
