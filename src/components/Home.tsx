@@ -19,7 +19,7 @@ function Home() {
                         {/* Intro text */}
                         <div>
                             <h1
-                                className={`${styles.heroHeadText} text-white`}
+                                className={`${styles.sectionHeadText} text-white`}
                                 data-aos="fade-right"
                                 data-aos-delay="400"
                             >
