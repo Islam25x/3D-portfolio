@@ -2,65 +2,75 @@ import { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import CanvasLoader from "./CanvasLoader";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+import avatarModel from "../assets/avatar/Untitled.glb";
 
-const Computers = () => {
-  const computer = useGLTF("./desktop_pc/scene.gltf");
-  const [scale, setScale] = useState(0.75); // الحجم الافتراضي
+const Avatar = () => {
+  const avatar = useGLTF(avatarModel);
+  const [transform, setTransform] = useState({
+    scale: 0.88,
+    position: [-3.5, -39, -2.5] as [number, number, number],
+    rotation: [0.05, 1.2, -0.01] as [number, number, number],
+  });
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 640) {
-        setScale(0.5); // شاشة صغيرة (موبايل)
+        setTransform({
+          scale: .9,
+          position: [-1, -41, -1.9],
+          rotation: [0.05, 1.2, -0.01],
+        });
       } else if (window.innerWidth < 1024) {
-        setScale(0.6); // شاشة متوسطة (تابلت)
+        setTransform({
+          scale: .98,
+          position: [0, -44.5, -2.15],
+          rotation: [0.05, 1.2, -0.01],
+        });
       } else {
-        setScale(0.75); // شاشة كبيرة (ديسكتوب)
+        setTransform({
+          scale: .97,
+          position: [-2.5, -44.5, -2.5],
+          rotation: [0.05, 1.2, -0.01],
+        });
       }
     };
 
-    handleResize(); // نفذها عند التحميل
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <mesh>
-      <hemisphereLight intensity={1.8} groundColor="black" />
-      <spotLight
-        position={[-20, 50, 10]}
-        angle={0.12}
-        penumbra={1}
-        intensity={1}
-        castShadow
-        shadow-mapSize={1024}
-      />
-      <pointLight intensity={1} />
+      <ambientLight intensity={0.5} />
+
+      <directionalLight position={[3, 3, 5]} intensity={1.2} />
+
+      <directionalLight position={[-3, 2, 5]} intensity={0.6} />
+
+      <spotLight position={[0, 2, 4]} intensity={2} angle={0.35} />
+
       <primitive
-        object={computer.scene}
-        scale={scale} // <-- نستخدم scale الديناميكي
-        position={[0, -3.5, -1.5]}
-        rotation={[-0.01, -0.2, -0.1]}
+        object={avatar.scene}
+        scale={transform.scale}
+        position={transform.position}
+        rotation={transform.rotation}
       />
     </mesh>
   );
 };
 
-const ComputersCanvas = () => {
+const AvatarCanvas = () => {
   return (
     <Canvas
       frameloop="demand"
       shadows
       dpr={[1, 2]}
-      camera={{ position: [20, 3, 5], fov: 25 }}
+      camera={{ position: [20, -.5, 5], fov: 25 }}
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls
-          enableZoom={false}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
-        />
-        <Computers />
+        <Avatar />
       </Suspense>
 
       <Preload all />
@@ -68,4 +78,4 @@ const ComputersCanvas = () => {
   );
 };
 
-export default ComputersCanvas;
+export default AvatarCanvas;

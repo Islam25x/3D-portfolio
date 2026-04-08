@@ -55,7 +55,7 @@ const Contact: React.FC = () => {
                     subject: "New Contact Message",
                     message: form.message,
                 },
-                "W43MeO7T7b-SxTlLn"
+                "4_o454FjXYKWpIcPR"
             )
             .then(
                 () => {

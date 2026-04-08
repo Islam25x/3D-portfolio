@@ -14,7 +14,7 @@ function ProjectsCard({ name, description, tags, image, source_code_link }: Proj
             </div>
             <div className=" mt-4 ms-6 flex flex-wrap gap-2">
                 {tags.map((tag) => (
-                    <p className={`text-[14px] ${tag.color}`}>{tag.name}</p>
+                    <p key={tag.name} className={`text-[14px] ${tag.color}`}>{tag.name}</p>
                 ))}
             </div>
         </a>
