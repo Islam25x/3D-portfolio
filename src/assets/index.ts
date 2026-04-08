@@ -21,6 +21,7 @@ import threejs from "./tech/threejs.svg";
 import homeless from "./Homeless.png";
 import Exclusive from "./e-commerce.png";
 import Atmoscan from "./weather app.png";
+import VivaDecor from "./VivaDecor.png";
 
 export {
   linkDev,
@@ -45,4 +46,5 @@ export {
   homeless,
   Exclusive,
   Atmoscan,
+  VivaDecor,
 };

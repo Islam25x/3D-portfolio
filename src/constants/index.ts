@@ -17,6 +17,7 @@ import {
   homeless,
   Exclusive,
   Atmoscan,
+  VivaDecor,
 } from "../assets";
 
 export const navLinks = [
@@ -212,6 +213,27 @@ const projects = [
     image: Atmoscan,
     source_code_link: "https://atmoscan.vercel.app/",
   },
+  {
+    name: "VivaDeco",
+    description:
+      "Built a clean and modern interior design landing page focused on strong visual hierarchy, responsive design, and smooth user experience. Emphasized layout structure, spacing, and typography using pure HTML and CSS.",
+    tags: [
+      {
+        name: "html",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "css",
+        color: "green-text-gradient",
+      },
+      {
+        name: "ui/ux",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: VivaDecor,
+    source_code_link: "https://islam25x.github.io/VivaDeco/",
+  }
 ];
 
 export { services, technologies, experiences, testimonials, projects };

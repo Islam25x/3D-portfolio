@@ -1,9 +1,12 @@
 import { styles } from "../../styles"
 import { projects } from "../../constants"
 import ProjectsCard from "./ProjectsCard"
-import Tilt from "react-parallax-tilt"
 import { Typewriter } from "react-simple-typewriter"
+import { useCarousel } from "../../hooks/useCarousel"
 function Projects() {
+    const { viewportRef, trackRef, loopItems, cardWidth, gap, isDragging, bindings } =
+        useCarousel(projects, { gap: 24, speed: 18 });
+
     return (
         <section id="Projects" className="mx-auto max-w-7xl px-5 sm:px-16 mt-40">
             {/* Intro */}
@@ -35,20 +38,25 @@ function Projects() {
             </div>
 
             {/* Project cards */}
-            <div className="mt-10 flex flex-wrap justify-center gap-7">
-                {projects.map((project, i) => (
-                    <div
-                        key={project.name}
-                        data-aos="zoom-in"
-                        data-aos-delay={300 + i * 150}
-                        className="w-full sm:w-[80%] md:w-[360px] p-2"
-                    >
-                        <Tilt
-                            scale={1.05}
-                            tiltMaxAngleX={45}
-                            tiltMaxAngleY={45}
-                            transitionSpeed={450}
-                            className="bg-tertiary p-5 rounded-2xl w-full h-full"
+            <div
+                ref={viewportRef}
+                className={`mt-10 overflow-hidden select-none ${isDragging ? "cursor-grabbing" : "cursor-grab"
+                    }`}
+                style={{ touchAction: "pan-y" }}
+                {...bindings}
+            >
+                <div
+                    ref={trackRef}
+                    className="flex items-stretch will-change-transform"
+                    style={{ gap: `${gap}px` }}
+                >
+                    {loopItems.map((project, i) => (
+                        <div
+                            key={`${project.name}-${i}`}
+                            data-aos="zoom-in"
+                            data-aos-delay={300 + (i % projects.length) * 120}
+                            className="shrink-0 self-stretch"
+                            style={{ width: cardWidth || 320 }}
                         >
                             <ProjectsCard
                                 name={project.name}
@@ -57,9 +65,9 @@ function Projects() {
                                 image={project.image}
                                 source_code_link={project.source_code_link}
                             />
-                        </Tilt>
-                    </div>
-                ))}
+                        </div>
+                    ))}
+                </div>
             </div>
 
         </section>

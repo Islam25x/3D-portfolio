@@ -1,7 +1,7 @@
 import { testimonials } from "../../constants";
 import { styles } from "../../styles";
 import TestimonialCard from "./TestimonialCard";
-import { useCarousel } from "./useCarousel";
+import { useCarousel } from "../../hooks/useCarousel";
 
 function TestimonialsSection() {
   const { viewportRef, trackRef, loopItems, cardWidth, gap, isDragging, bindings } =

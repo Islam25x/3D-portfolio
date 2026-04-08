@@ -13,8 +13,8 @@ type CarouselBindings = {
 };
 
 type CarouselHookReturn<T> = {
-  viewportRef: React.RefObject<HTMLDivElement>;
-  trackRef: React.RefObject<HTMLDivElement>;
+  viewportRef: React.RefObject<HTMLDivElement | null>;
+  trackRef: React.RefObject<HTMLDivElement | null>;
   loopItems: T[];
   cardWidth: number;
   gap: number;
