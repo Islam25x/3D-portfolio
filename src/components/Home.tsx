@@ -5,7 +5,7 @@ function Home() {
         <section className="relative bg-hero-pattern w-full h-screen overflow-hidden mx-auto">
             <div className={`max-w-7xl mx-auto ${styles.paddingX} pt-28 sm:pt-32`}>
                 <div className="min-h-[calc(100vh-7rem)] sm:min-h-[calc(100vh-8rem)] lg:min-h-0 flex flex-col lg:flex-row items-center justify-start lg:justify-between gap-4 sm:gap-6 lg:gap-10">
-                    <div className="flex flex-row items-start gap-5 flex-1">
+                    <div className="flex flex-row items-start lg:-mt-8 gap-5 flex-1">
                         {/* Left accent line */}
                         <div
                             className="flex flex-col justify-center items-center mt-2"
@@ -19,7 +19,7 @@ function Home() {
                         {/* Intro text */}
                         <div>
                             <h1
-                                className={`font-medium lg:-mt-8 lg:text-[42px] sm:text-[35px] xs:text-[28px] text-[25px] lg:leading-[40px] text-white`}
+                                className={`font-medium lg:text-[42px] sm:text-[35px] xs:text-[28px] text-[25px] lg:leading-[40px] text-white`}
                                 data-aos="fade-right"
                                 data-aos-delay="400"
                             >
