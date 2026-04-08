@@ -8,6 +8,7 @@ import Work from "./components/Work/Work"
 import Tech from "./components/Tech/Tech"
 import Projects from "./components/Projects/Projects"
 import Contact from "./components/Contact/Contact"
+import TestimonialsSection from "./components/Testimonials/TestimonialsSection"
 
 import "aos/dist/aos.css";
 
@@ -35,6 +36,7 @@ function App() {
             <Work />
             <Tech />
             <Projects />
+            <TestimonialsSection />
             <Contact />
           </main>
         </>

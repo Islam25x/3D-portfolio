@@ -121,28 +121,34 @@ const experiences = [
 
 const testimonials = [
   {
-    testimonial:
-      "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-    name: "Sara Lee",
-    designation: "CFO",
-    company: "Acme Co",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
+    quote:
+      "Islam consistently demonstrated strong ownership and responsibility in his work. He was proactive, receptive to feedback, and always applied improvements effectively. His understanding of JavaScript and React stood out, and it was clear he was genuinely passionate about learning and building.",
+    author: "Frontend Team",
+    role: "Link Development",
   },
   {
-    testimonial:
-      "I've never met a web developer who truly cares about their clients' success like Rick does.",
-    name: "Chris Brown",
-    designation: "COO",
-    company: "DEF Corp",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
+    quote:
+      "Islam showed strong ownership and always applied feedback effectively. His skills in React and JavaScript were impressive, and his passion for learning was very clear.",
+    author: "Frontend Team Member",
+    role: "Link Development",
   },
   {
-    testimonial:
-      "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "Lisa Wang",
-    designation: "CTO",
-    company: "456 Enterprises",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
+    quote:
+      "Islam takes real ownership of his work and continuously improves based on feedback. He demonstrated solid skills in React and JavaScript, with a clear focus on writing clean, maintainable code.",
+    author: "Frontend Team Member",
+    role: "Link Development",
+  },
+  {
+    quote:
+      "Islam explains complex React concepts in a very simple and practical way. The sessions were clear and focused on real-world usage, not just theory.",
+    author: "IEEE Student Participant",
+    role: "IEEE",
+  },
+  {
+    quote:
+      "The project structure and performance optimization were impressive. It felt like a real production-level application, not a simple demo.",
+    author: "Code Reviewer",
+    role: "Independent Review",
   },
 ];
 

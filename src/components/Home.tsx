@@ -19,11 +19,11 @@ function Home() {
                         {/* Intro text */}
                         <div>
                             <h1
-                                className={`${styles.sectionHeadText} text-white`}
+                                className={`${styles.heroHeadText} text-white`}
                                 data-aos="fade-right"
                                 data-aos-delay="400"
                             >
-                                Islam — <span className="text-[#915EFF]">Frontend Engineer</span>
+                                Hi, I'm <span className="text-[#915EFF]">Islam</span>
                             </h1>
                             <p
                                 className={`${styles.heroSubText} mt-2 text-white-100`}
