@@ -19,7 +19,7 @@ function Home() {
                         {/* Intro text */}
                         <div>
                             <h1
-                                className={`font-medium lg:text-[42px] sm:text-[35px] xs:text-[28px] text-[25px] lg:leading-[40px] text-white`}
+                                className={`font-medium lg:-mt-8 lg:text-[42px] sm:text-[35px] xs:text-[28px] text-[25px] lg:leading-[40px] text-white`}
                                 data-aos="fade-right"
                                 data-aos-delay="400"
                             >
