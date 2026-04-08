@@ -42,7 +42,7 @@ function Home() {
                                 data-aos="fade-up"
                                 data-aos-delay="750"
                             >
-                                Let's Talk
+                                Work With Me
                             </a>
                         </div>
                     </div>
