@@ -1,5 +1,5 @@
 import { OrbitControls, Preload, Decal, Float, useTexture } from "@react-three/drei";
-import { Canvas, ThreeEvent } from "@react-three/fiber";
+import { Canvas, type ThreeEvent } from "@react-three/fiber";
 import { Suspense } from "react";
 import CanvasLoader from "../CanvasLoader";
 

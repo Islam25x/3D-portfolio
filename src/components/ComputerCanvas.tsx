@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import CanvasLoader from "./CanvasLoader";
-import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+import { Preload, useGLTF } from "@react-three/drei";
 import avatarModel from "../assets/avatar/Untitled.glb";
 
 const Avatar = () => {

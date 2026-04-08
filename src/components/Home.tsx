@@ -23,7 +23,7 @@ function Home() {
                                 data-aos="fade-right"
                                 data-aos-delay="400"
                             >
-                                Hi, I'm <span className="text-[#915EFF]">Islam</span>
+                                Islam — <span className="text-[#915EFF]">Frontend Engineer</span>
                             </h1>
                             <p
                                 className={`${styles.heroSubText} mt-2 text-white-100`}
