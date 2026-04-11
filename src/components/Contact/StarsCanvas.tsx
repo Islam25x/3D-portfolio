@@ -1,16 +1,20 @@
-import { useRef } from "react"
-import { Canvas, useFrame } from "@react-three/fiber"
+import { useEffect, useRef } from "react"
+import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { Stars } from "@react-three/drei"
 import { Group } from "three" 
 
-function RotatingStars() {
+function RotatingStars({ isActive }: { isActive: boolean }) {
     const starsRef = useRef<Group>(null)
+    const { invalidate } = useThree()
+
+    useEffect(() => {
+        if (isActive) invalidate()
+    }, [invalidate, isActive])
 
     useFrame(() => {
-        if (starsRef.current) {
-            starsRef.current.rotation.x += 0.001
-            
-        }
+        if (!isActive) return
+        if (starsRef.current) starsRef.current.rotation.x += 0.001
+        invalidate()
     })
 
     return (
@@ -26,11 +30,11 @@ function RotatingStars() {
     )
 }
 
-function StarsCanvas() {
+function StarsCanvas({ isActive }: { isActive: boolean }) {
     return (
         <div className="absolute inset-0 w-full h-full">
-            <Canvas>
-                <RotatingStars />
+            <Canvas frameloop="demand" dpr={[1, 1.5]}>
+                <RotatingStars isActive={isActive} />
             </Canvas>
         </div>
     )

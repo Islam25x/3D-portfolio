@@ -1,16 +1,27 @@
 import { OrbitControls, Preload, Decal, Float, useTexture } from "@react-three/drei";
-import { Canvas, type ThreeEvent } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Canvas, type ThreeEvent, useFrame, useThree } from "@react-three/fiber";
+import { Suspense, useEffect, memo } from "react";
 import CanvasLoader from "../CanvasLoader";
 
 interface BallProps {
     imgUrl: string; 
+    isActive: boolean;
     onPointerOver?: (event: ThreeEvent<PointerEvent>) => void;
     onPointerOut?: (event: ThreeEvent<PointerEvent>) => void;
 }
 
-const Ball = ({ imgUrl, onPointerOver, onPointerOut }: BallProps) => {
+const Ball = ({ imgUrl, isActive, onPointerOver, onPointerOut }: BallProps) => {
     const [decal] = useTexture([imgUrl]);
+    const { invalidate } = useThree();
+
+    useEffect(() => {
+        if (isActive) invalidate();
+    }, [invalidate, isActive]);
+
+    useFrame((state) => {
+        if (!isActive) return;
+        state.invalidate();
+    });
 
     return (
         <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
@@ -37,18 +48,19 @@ const Ball = ({ imgUrl, onPointerOver, onPointerOut }: BallProps) => {
 
 interface BallCanvasProps {
     icon: string;  
+    isActive: boolean;
     onPointerOver?: (event: ThreeEvent<PointerEvent>) => void;
     onPointerOut?: (event: ThreeEvent<PointerEvent>) => void;
 }
 
-function BallCanvas({ icon, onPointerOver, onPointerOut }: BallCanvasProps) {
+function BallCanvas({ icon, isActive, onPointerOver, onPointerOut }: BallCanvasProps) {
     return (
-        <Canvas frameloop="demand" dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
+        <Canvas frameloop="demand" dpr={[1, 1.5]}>
             <Suspense fallback={<CanvasLoader />}>
                 <OrbitControls enableZoom={false} />
                 <ambientLight intensity={0.25} />
                 <directionalLight position={[0, 0, 0.05]} />
-                <Ball imgUrl={icon} onPointerOver={onPointerOver} onPointerOut={onPointerOut} />
+                <Ball imgUrl={icon} isActive={isActive} onPointerOver={onPointerOver} onPointerOut={onPointerOut} />
             </Suspense>
 
             <Preload all />
@@ -56,4 +68,4 @@ function BallCanvas({ icon, onPointerOver, onPointerOut }: BallCanvasProps) {
     );
 }
 
-export default BallCanvas;
+export default memo(BallCanvas);

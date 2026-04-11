@@ -77,6 +77,7 @@ function Home() {
                                 className="relative z-10 w-[360px] sm:w-[460px] md:w-[600px] lg:w-[760px] xl:w-[880px] h-auto object-contain drop-shadow-[0_30px_60px_rgba(110,78,255,0.35)]"
                                 data-aos="fade-left"
                                 data-aos-delay="650"
+                                decoding="async"
                             />
                         </div>
                     </div>

@@ -1,5 +1,6 @@
 import { VerticalTimelineElement } from "react-vertical-timeline-component";
 import type { ExperienceProps } from "../../types/ExperienceProps";
+import { memo } from "react";
 function Experience({ title, date, iconBg, points, icon, company_name }: ExperienceProps) {
     return (
         <VerticalTimelineElement
@@ -24,4 +25,4 @@ function Experience({ title, date, iconBg, points, icon, company_name }: Experie
     );
 }
 
-export default Experience;
+export default memo(Experience);

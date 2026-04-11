@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 type TestimonialCardProps = {
   quote: string;
   author: string;
@@ -45,4 +47,4 @@ function TestimonialCard({ quote, author, role, width }: TestimonialCardProps) {
   );
 }
 
-export default TestimonialCard;
+export default memo(TestimonialCard);

@@ -4,9 +4,11 @@ import TestimonialCard from "./TestimonialCard";
 import { useCarousel } from "../../hooks/useCarousel";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { useInView } from "../../hooks/useInView";
 
 function TestimonialsSection() {
   const { t, i18n } = useTranslation();
+  const { ref: sectionRef, inView } = useInView<HTMLElement>({ rootMargin: "200px 0px" });
   const translatedTestimonials = useMemo(
     () =>
       testimonials.map((testimonial) => ({
@@ -20,10 +22,10 @@ function TestimonialsSection() {
 
   const isRtl = i18n.resolvedLanguage === "ar";
   const { viewportRef, trackRef, loopItems, cardWidth, gap, isDragging, bindings } =
-    useCarousel(translatedTestimonials, { gap: 24, speed: 22, direction: isRtl ? "rtl" : "ltr" });
+    useCarousel(translatedTestimonials, { gap: 24, speed: 22, direction: isRtl ? "rtl" : "ltr", isActive: inView });
 
   return (
-    <section id="testimonials" className="mx-auto max-w-7xl px-5 sm:px-16 mt-40">
+    <section ref={sectionRef} id="testimonials" className="mx-auto max-w-7xl px-5 sm:px-16 mt-40">
       <div data-aos="fade-up">
         <p className={styles.sectionSubText}>{t("testimonials.sub")}</p>
         <h2 className={styles.sectionHeadText}>{t("testimonials.title")}</h2>

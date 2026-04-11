@@ -1,20 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-type LoaderProps = {
-    onFinish: () => void;
-};
-
-const Loader: React.FC<LoaderProps> = ({ onFinish }) => {
+const Loader: React.FC = () => {
     const { t } = useTranslation();
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            onFinish();
-        }, 3500); 
-        return () => clearTimeout(timer);
-    }, []);
 
     return (
         <AnimatePresence>

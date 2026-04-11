@@ -1,16 +1,20 @@
 import CanvasLoader from "../CanvasLoader"
 import { Suspense, useRef, useEffect, useState } from "react"
-import { Canvas, useFrame } from "@react-three/fiber"
+import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { OrbitControls, useGLTF, Preload } from "@react-three/drei"
 import { Mesh } from "three"
 
-function Earth() {
+function Earth({ isActive }: { isActive: boolean }) {
     const earthRef = useRef<Mesh>(null)
     const Earth = useGLTF("./planet/scene.gltf")
+    const { invalidate } = useThree()
+    useEffect(() => {
+        if (isActive) invalidate()
+    }, [invalidate, isActive])
     useFrame(() => {
-        if (earthRef.current) {
-            earthRef.current.rotation.y += 0.005
-        }
+        if (!isActive) return
+        if (earthRef.current) earthRef.current.rotation.y += 0.005
+        invalidate()
     })
 
     const [scale, setScale] = useState(1);
@@ -39,14 +43,13 @@ function Earth() {
     )
 }
 
-function EarthCanvas() {
+function EarthCanvas({ isActive }: { isActive: boolean }) {
     return (
         <Canvas
-            frameloop="always"
+            frameloop="demand"
             shadows
-            dpr={[1, 2]}
+            dpr={[1, 1.5]}
             camera={{ position: [0, 0, 10], fov: 25 }}
-            gl={{ preserveDrawingBuffer: true }}
             className="!w-full"
         >
             <Suspense fallback={<CanvasLoader />}>
@@ -55,7 +58,7 @@ function EarthCanvas() {
                     maxPolarAngle={Math.PI / 2}
                     minPolarAngle={Math.PI / 2}
                 />
-                <Earth />
+                <Earth isActive={isActive} />
             </Suspense>
 
             <Preload all />

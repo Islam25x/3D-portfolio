@@ -6,6 +6,7 @@ import StarsCanvas from "./StarsCanvas";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useTranslation } from "react-i18next";
+import { useInView } from "../../hooks/useInView";
 
 type FormData = {
     name: string;
@@ -15,6 +16,7 @@ type FormData = {
 
 const Contact: React.FC = () => {
     const { t } = useTranslation();
+    const { ref: sectionRef, inView } = useInView<HTMLElement>({ rootMargin: "200px 0px" });
     const formRef = useRef<HTMLFormElement | null>(null);
     const [form, setForm] = useState<FormData>({
         name: "",
@@ -79,12 +81,12 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <section id="contact" className="relative pt-4 pb-12">
-            <StarsCanvas />
-            <div className="mx-auto max-w-7xl px-5 sm:px-16 mt-40 relative flex flex-col md:flex-row gap-10 overflow-hidden">
+        <section ref={sectionRef} id="contact" className="relative pt-4 pb-12">
+            <StarsCanvas isActive={inView} />
+            <div className="mx-auto max-w-7xl px-5 sm:px-16 mt-40 relative flex flex-col md:flex-row gap-10">
                 {/* Contact Form */}
                 <div
-                    className="w-full md:w-1/2 bg-black-100 p-8 rounded-2xl order-2 md:order-1"
+                    className="w-full md:w-1/2 bg-black-100 p-8 rounded-2xl order-2 md:order-1 relative z-10"
                     data-aos="fade-right"
                 >
                     <p className={styles.sectionSubText}>{t("contact.sub")}</p>
@@ -130,7 +132,6 @@ const Contact: React.FC = () => {
                         <button
                             type="submit"
                             className="bg-tertiary py-3 px-8 rounded-xl w-fit text-white font-bold shadow-md shadow-primary cursor-pointer transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50 hover:bg-[#915EFF]"
-                            data-aos="fade-up"
                             data-aos-delay={400}
                         >
                             {loading ? t("contact.form.sending") : t("contact.form.send")}
@@ -140,10 +141,10 @@ const Contact: React.FC = () => {
 
                 {/* Earth Canvas */}
                 <div
-                    className="w-full md:w-1/2 order-1 md:order-2"
+                    className="w-full md:w-1/2 order-1 md:order-2 relative z-10"
                     data-aos="fade-left"
                 >
-                    <EarthCanvas />
+                    <EarthCanvas isActive={inView} />
                 </div>
             </div>
 

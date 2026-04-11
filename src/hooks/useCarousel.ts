@@ -5,6 +5,7 @@ type CarouselOptions = {
   gap?: number;
   speed?: number;
   direction?: "ltr" | "rtl";
+  isActive?: boolean;
 };
 
 type CarouselBindings = {
@@ -37,6 +38,25 @@ function normalizePosition(value: number, trackWidth: number) {
   return ((value % trackWidth) + trackWidth) % trackWidth;
 }
 
+function usePrefersReducedMotion() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setPrefersReducedMotion(media.matches);
+    update();
+    if (media.addEventListener) {
+      media.addEventListener("change", update);
+      return () => media.removeEventListener("change", update);
+    }
+    media.addListener(update);
+    return () => media.removeListener(update);
+  }, []);
+
+  return prefersReducedMotion;
+}
+
 export function useCarousel<T>(
   items: T[],
   options: CarouselOptions = {}
@@ -47,6 +67,7 @@ export function useCarousel<T>(
   const isRtl = direction === "rtl";
   const transformSign = isRtl ? 1 : -1;
   const dragSign = isRtl ? 1 : -1;
+  const isActive = options.isActive ?? true;
 
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -65,6 +86,7 @@ export function useCarousel<T>(
   const isHoveredRef = useRef(false);
   const isDraggingRef = useRef(false);
   const isSnappingRef = useRef(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   const loopItems = useMemo(() => [...items, ...items], [items]);
 
@@ -143,7 +165,7 @@ export function useCarousel<T>(
   }, [animateTo, cardWidth, gap, items.length]);
 
   useEffect(() => {
-    if (!cardWidth || !items.length) return;
+    if (!cardWidth || !items.length || !isActive || prefersReducedMotion) return;
 
     const tick = (time: number) => {
       if (lastTimeRef.current === null) {
@@ -175,7 +197,7 @@ export function useCarousel<T>(
       autoFrameRef.current = null;
       lastTimeRef.current = null;
     };
-  }, [cardWidth, items.length, speed, updateTransform]);
+  }, [cardWidth, items.length, speed, updateTransform, isActive, prefersReducedMotion]);
 
   useEffect(() => {
     const handlePointerMove = (event: PointerEvent) => {

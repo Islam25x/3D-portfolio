@@ -31,6 +31,8 @@ function Work() {
                                         src={experience.icon}
                                         alt={t(experience.companyKey)}
                                         className="w-[60%] h-[60%] object-contain"
+                                        loading="lazy"
+                                        decoding="async"
                                     />
                                 </div>
                             }

@@ -5,8 +5,10 @@ import ProjectsCard from "./ProjectsCard"
 import { Typewriter } from "react-simple-typewriter"
 import { useCarousel } from "../../hooks/useCarousel"
 import { useTranslation } from "react-i18next"
+import { useInView } from "../../hooks/useInView"
 function Projects() {
     const { t, i18n } = useTranslation()
+    const { ref: sectionRef, inView } = useInView<HTMLElement>({ rootMargin: "200px 0px" })
     const typewriterWordsRaw = t("projects.typewriter", { returnObjects: true })
     const typewriterWords = Array.isArray(typewriterWordsRaw)
         ? typewriterWordsRaw
@@ -24,10 +26,10 @@ function Projects() {
 
     const isRtl = i18n.resolvedLanguage === "ar";
     const { viewportRef, trackRef, loopItems, cardWidth, gap, isDragging, bindings } =
-        useCarousel(translatedProjects, { gap: 24, speed: 18, direction: isRtl ? "rtl" : "ltr" });
+        useCarousel(translatedProjects, { gap: 24, speed: 18, direction: isRtl ? "rtl" : "ltr", isActive: inView });
 
     return (
-        <section id="Projects" className="mx-auto max-w-7xl px-5 sm:px-16 mt-40">
+        <section ref={sectionRef} id="Projects" className="mx-auto max-w-7xl px-5 sm:px-16 mt-40">
             {/* Intro */}
             <div
                 className="top"
