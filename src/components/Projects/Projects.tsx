@@ -1,11 +1,30 @@
+import { useMemo } from "react"
 import { styles } from "../../styles"
 import { projects } from "../../constants"
 import ProjectsCard from "./ProjectsCard"
 import { Typewriter } from "react-simple-typewriter"
 import { useCarousel } from "../../hooks/useCarousel"
+import { useTranslation } from "react-i18next"
 function Projects() {
+    const { t, i18n } = useTranslation()
+    const typewriterWordsRaw = t("projects.typewriter", { returnObjects: true })
+    const typewriterWords = Array.isArray(typewriterWordsRaw)
+        ? typewriterWordsRaw
+        : [String(typewriterWordsRaw)]
+
+    const translatedProjects = useMemo(
+        () =>
+            projects.map((project) => ({
+                ...project,
+                name: t(project.nameKey),
+                description: t(project.descriptionKey),
+            })),
+        [i18n.language, t]
+    )
+
+    const isRtl = i18n.resolvedLanguage === "ar";
     const { viewportRef, trackRef, loopItems, cardWidth, gap, isDragging, bindings } =
-        useCarousel(projects, { gap: 24, speed: 18 });
+        useCarousel(translatedProjects, { gap: 24, speed: 18, direction: isRtl ? "rtl" : "ltr" });
 
     return (
         <section id="Projects" className="mx-auto max-w-7xl px-5 sm:px-16 mt-40">
@@ -15,19 +34,13 @@ function Projects() {
                 data-aos="fade-up"
                 data-aos-delay="200"
             >
-                <p className={styles.sectionSubText}>My work</p>
-                <h2 className={styles.sectionHeadText}>Projects.</h2>
+                <p className={styles.sectionSubText}>{t("projects.sub")}</p>
+                <h2 className={styles.sectionHeadText}>{t("projects.title")}</h2>
 
                 {/* Typewriter paragraph */}
                 <p className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]">
                     <Typewriter
-                        words={[
-                            "Real projects. Real results.",
-                            "Each one solves a real problem — not just UI.",
-                            "Built with scalable architecture and clean code.",
-                            "Live demos. Source code. Full transparency.",
-                            "Explore the work — and imagine yours next.",
-                        ]}
+                        words={typewriterWords}
                         loop={false}
                         cursor
                         cursorStyle="|"

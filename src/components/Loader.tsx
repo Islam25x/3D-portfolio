@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 type LoaderProps = {
     onFinish: () => void;
 };
 
 const Loader: React.FC<LoaderProps> = ({ onFinish }) => {
+    const { t } = useTranslation();
+
     useEffect(() => {
         const timer = setTimeout(() => {
             onFinish();
@@ -36,7 +39,7 @@ const Loader: React.FC<LoaderProps> = ({ onFinish }) => {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1 }}
                 >
-                    Loading Portfolio...
+                    {t("loader.loading")}
                 </motion.p>
 
                 {/* Animated dots */}

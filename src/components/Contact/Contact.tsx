@@ -5,6 +5,7 @@ import EarthCanvas from "./EarthCanvas";
 import StarsCanvas from "./StarsCanvas";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { useTranslation } from "react-i18next";
 
 type FormData = {
     name: string;
@@ -13,6 +14,7 @@ type FormData = {
 };
 
 const Contact: React.FC = () => {
+    const { t } = useTranslation();
     const formRef = useRef<HTMLFormElement | null>(null);
     const [form, setForm] = useState<FormData>({
         name: "",
@@ -37,7 +39,7 @@ const Contact: React.FC = () => {
 
         // ✅ Validation
         if (!form.name || !form.email || !form.message) {
-            toast.error("Please fill in all fields!");
+            toast.error(t("contact.toasts.validation"));
             return;
         }
 
@@ -52,7 +54,7 @@ const Contact: React.FC = () => {
                     from_email: form.email,
                     to_name: "Islam Salah",
                     to_email: "islam.salah.is08@gmail.com",
-                    subject: "New Contact Message",
+                    subject: t("contact.subject"),
                     message: form.message,
                 },
                 "4_o454FjXYKWpIcPR"
@@ -60,7 +62,7 @@ const Contact: React.FC = () => {
             .then(
                 () => {
                     setLoading(false);
-                    toast.success("Thank you. I will get back to you as soon as possible.");
+                    toast.success(t("contact.toasts.success"));
 
                     setForm({
                         name: "",
@@ -71,7 +73,7 @@ const Contact: React.FC = () => {
                 (error) => {
                     setLoading(false);
                     console.error(error);
-                    toast.error("Ahh, something went wrong. Please try again.");
+                    toast.error(t("contact.toasts.error"));
                 }
             );
     };
@@ -85,42 +87,42 @@ const Contact: React.FC = () => {
                     className="w-full md:w-1/2 bg-black-100 p-8 rounded-2xl order-2 md:order-1"
                     data-aos="fade-right"
                 >
-                    <p className={styles.sectionSubText}>Get in touch</p>
-                    <h3 className={styles.sectionHeadText}>Contact.</h3>
+                    <p className={styles.sectionSubText}>{t("contact.sub")}</p>
+                    <h3 className={styles.sectionHeadText}>{t("contact.title")}</h3>
 
                     <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col gap-8">
                         <label className="flex flex-col" data-aos="fade-up" data-aos-delay={100}>
-                            <span className="text-white font-medium mb-4">Your Name</span>
+                            <span className="text-white font-medium mb-4">{t("contact.form.nameLabel")}</span>
                             <input
                                 type="text"
                                 name="name"
                                 value={form.name}
                                 onChange={handleChange}
-                                placeholder="Your name"
+                                placeholder={t("contact.form.namePlaceholder")}
                                 className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
                             />
                         </label>
 
                         <label className="flex flex-col" data-aos="fade-up" data-aos-delay={200}>
-                            <span className="text-white font-medium mb-4">Your Email</span>
+                            <span className="text-white font-medium mb-4">{t("contact.form.emailLabel")}</span>
                             <input
                                 type="email"
                                 name="email"
                                 value={form.email}
                                 onChange={handleChange}
-                                placeholder="Your email address"
+                                placeholder={t("contact.form.emailPlaceholder")}
                                 className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
                             />
                         </label>
 
                         <label className="flex flex-col" data-aos="fade-up" data-aos-delay={300}>
-                            <span className="text-white font-medium mb-4">Your Message</span>
+                            <span className="text-white font-medium mb-4">{t("contact.form.messageLabel")}</span>
                             <textarea
                                 rows={7}
                                 name="message"
                                 value={form.message}
                                 onChange={handleChange}
-                                placeholder="Describe your idea, requirements, or what you need help with..."
+                                placeholder={t("contact.form.messagePlaceholder")}
                                 className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
                             />
                         </label>
@@ -131,7 +133,7 @@ const Contact: React.FC = () => {
                             data-aos="fade-up"
                             data-aos-delay={400}
                         >
-                            {loading ? "Sending..." : "Send"}
+                            {loading ? t("contact.form.sending") : t("contact.form.send")}
                         </button>
                     </form>
                 </div>

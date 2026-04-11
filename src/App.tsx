@@ -9,6 +9,7 @@ import Tech from "./components/Tech/Tech"
 import Projects from "./components/Projects/Projects"
 import Contact from "./components/Contact/Contact"
 import TestimonialsSection from "./components/Testimonials/TestimonialsSection"
+import LanguageSwitcher from "./components/LanguageSwitcher"
 
 import "aos/dist/aos.css";
 
@@ -30,6 +31,7 @@ function App() {
           <header>
             <Header />
           </header>
+          <LanguageSwitcher />
           <main>
             <Home />
             <About />

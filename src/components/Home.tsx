@@ -1,6 +1,12 @@
-import { styles } from "../styles"
+﻿import { styles } from "../styles"
 import { avatar } from "../assets"
+import { useTranslation } from "react-i18next"
 function Home() {
+    const { t, i18n } = useTranslation()
+    const displayName = i18n.resolvedLanguage === "ar" ? "اسلام" : "Islam"
+    const waMessage = t("home.whatsappMessage")
+    const waUrl = `https://wa.me/201004791339?text=${encodeURIComponent(waMessage)}`
+
     return (
         <section className="relative bg-hero-pattern w-full h-screen overflow-hidden mx-auto">
             <div className={`max-w-7xl mx-auto ${styles.paddingX} pt-28 sm:pt-32`}>
@@ -23,26 +29,26 @@ function Home() {
                                 data-aos="fade-right"
                                 data-aos-delay="400"
                             >
-                                Islam —
-                                <span className="text-[#915EFF]">Frontend Engineer</span>
+                                {displayName} —
+                                <span className="text-[#915EFF]">{t("home.role")}</span>
                             </h1>
                             <p
                                 className={`${styles.heroSubText} mt-2 text-white-100`}
                                 data-aos="fade-up"
                                 data-aos-delay="600"
                             >
-                                I build fast, scalable web apps that actually ship. <br className="sm:block hidden" />
-                                built with React, TypeScript & clean architecture
+                                {t("home.introLine1")} <br className="sm:block hidden" />
+                                {t("home.introLine2")}
                             </p>
                             <a
-                                href="https://wa.me/201004791339?text=Hi%20Islam,%20I%20saw%20your%20portfolio"
+                                href={waUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 mt-6 bg-tertiary py-3 px-8 rounded-xl w-fit text-white font-bold shadow-md shadow-primary cursor-pointer transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50 hover:bg-[#915EFF]"
                                 data-aos="fade-up"
                                 data-aos-delay="750"
                             >
-                                <span>Work With Me</span>
+                                <span>{t("home.cta")}</span>
                                 <svg
                                     aria-hidden="true"
                                     viewBox="0 0 32 32"
@@ -67,7 +73,7 @@ function Home() {
                             />
                             <img
                                 src={avatar}
-                                alt="Islam avatar"
+                                alt={t("home.avatarAlt")}
                                 className="relative z-10 w-[360px] sm:w-[460px] md:w-[600px] lg:w-[760px] xl:w-[880px] h-auto object-contain drop-shadow-[0_30px_60px_rgba(110,78,255,0.35)]"
                                 data-aos="fade-left"
                                 data-aos-delay="650"
@@ -81,3 +87,5 @@ function Home() {
 }
 
 export default Home
+
+

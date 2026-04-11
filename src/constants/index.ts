@@ -23,29 +23,29 @@ import {
 export const navLinks = [
   {
     id: "about",
-    title: "About",
+    titleKey: "nav.about",
   },
   {
     id: "work",
-    title: "Work",
+    titleKey: "nav.work",
   },
   {
     id: "contact",
-    title: "Contact",
+    titleKey: "nav.contact",
   },
 ];
 
 const services = [
   {
-    title: "front end Developer",
+    titleKey: "services.frontend",
     icon: web,
   },
   {
-    title: "Ui / Ux Designer",
+    titleKey: "services.uiux",
     icon: mobile,
   },
   {
-    title: "three.js Developer",
+    titleKey: "services.three",
     icon: backend,
   },
 ];
@@ -95,69 +95,63 @@ const technologies = [
 
 const experiences = [
   {
-    title: "front end internship",
-    company_name: "Web master",
+    titleKey: "work.experiences.exp1.title",
+    companyKey: "work.experiences.exp1.company",
     icon: webMaster,
     iconBg: "#0f1020",
-    date: "Oct 2024 - Jan 2025",
-    points: [
-      "built pure Html, css, js projects.",
-      "built responsive projects with react bootstrap and tailwind.",
-      " recorded videos explain redux and js concepts.",
+    dateKey: "work.experiences.exp1.date",
+    pointsKeys: [
+      "work.experiences.exp1.points.0",
+      "work.experiences.exp1.points.1",
+      "work.experiences.exp1.points.2",
     ],
   },
   {
-    title: "front end internship",
-    company_name: "Link development",
+    titleKey: "work.experiences.exp2.title",
+    companyKey: "work.experiences.exp2.company",
     icon: linkDev,
     iconBg: "#ffffff",
-    date: " Jul 2025 - Aug 2025",
-    points: [
-      "Built and enhanced web applications using React (TypeScript), React Query, Context API, Axios, Zod, and Tailwind CSS.",
-      "Collaborated in an Agile/Scrum environment, participating in code reviews and feature planning.",
-      "integrated REST APIs with Axios, including error handling and request interceptors.",
+    dateKey: "work.experiences.exp2.date",
+    pointsKeys: [
+      "work.experiences.exp2.points.0",
+      "work.experiences.exp2.points.1",
+      "work.experiences.exp2.points.2",
     ],
   }
 ];
 
 const testimonials = [
   {
-    quote:
-      "Islam consistently demonstrated strong ownership and responsibility in his work. He was proactive, receptive to feedback, and always applied improvements effectively. His understanding of JavaScript and React stood out, and it was clear he was genuinely passionate about learning and building.",
-    author: "Frontend Team",
-    role: "Link Development",
+    quoteKey: "testimonials.items.t1.quote",
+    authorKey: "testimonials.items.t1.author",
+    roleKey: "testimonials.items.t1.role",
   },
   {
-    quote:
-      "Islam showed strong ownership and always applied feedback effectively. His skills in React and JavaScript were impressive, and his passion for learning was very clear.",
-    author: "Frontend Team Member",
-    role: "Link Development",
+    quoteKey: "testimonials.items.t2.quote",
+    authorKey: "testimonials.items.t2.author",
+    roleKey: "testimonials.items.t2.role",
   },
   {
-    quote:
-      "Islam takes real ownership of his work and continuously improves based on feedback. He demonstrated solid skills in React and JavaScript, with a clear focus on writing clean, maintainable code.",
-    author: "Frontend Team Member",
-    role: "Link Development",
+    quoteKey: "testimonials.items.t3.quote",
+    authorKey: "testimonials.items.t3.author",
+    roleKey: "testimonials.items.t3.role",
   },
   {
-    quote:
-      "Islam explains complex React concepts in a very simple and practical way. The sessions were clear and focused on real-world usage, not just theory.",
-    author: "IEEE Student Participant",
-    role: "IEEE",
+    quoteKey: "testimonials.items.t4.quote",
+    authorKey: "testimonials.items.t4.author",
+    roleKey: "testimonials.items.t4.role",
   },
   {
-    quote:
-      "The project structure and performance optimization were impressive. It felt like a real production-level application, not a simple demo.",
-    author: "Code Reviewer",
-    role: "Independent Review",
+    quoteKey: "testimonials.items.t5.quote",
+    authorKey: "testimonials.items.t5.author",
+    roleKey: "testimonials.items.t5.role",
   },
 ];
 
 const projects = [
   {
-    name: "Homeless",
-    description:
-      "Developed a property management platform with role-based auth, real-time chat/notifications, dynamic listings, Redux Toolkit, and an admin dashboard.",
+    nameKey: "projects.items.homeless.name",
+    descriptionKey: "projects.items.homeless.description",
     tags: [
       {
         name: "react",
@@ -176,9 +170,8 @@ const projects = [
     source_code_link: "https://homeless-lovat.vercel.app/",
   },
   {
-    name: "Exclusive",
-    description:
-      "Built an e-commerce website (React + TypeScript) with secure auth (Redux Toolkit), multilingual support (i18next), real-time cart/wishlist.",
+    nameKey: "projects.items.exclusive.name",
+    descriptionKey: "projects.items.exclusive.description",
     tags: [
       {
         name: "react",
@@ -197,9 +190,8 @@ const projects = [
     source_code_link: "https://e-commerce-typescript.vercel.app/",
   },
   {
-    name: "Atmoscan",
-    description:
-      "Developed a weather application using React and Tailwind CSS, integrating weather data via Axios API calls. Implemented smooth animations.",
+    nameKey: "projects.items.atmoscan.name",
+    descriptionKey: "projects.items.atmoscan.description",
     tags: [
       {
         name: "react",
@@ -214,9 +206,8 @@ const projects = [
     source_code_link: "https://atmoscan.vercel.app/",
   },
   {
-    name: "VivaDeco",
-    description:
-      "Built a clean and modern interior design landing page focused on strong visual hierarchy, responsive design, and smooth user experience. Emphasized layout structure, spacing, and typography using pure HTML and CSS.",
+    nameKey: "projects.items.vivadeco.name",
+    descriptionKey: "projects.items.vivadeco.description",
     tags: [
       {
         name: "html",

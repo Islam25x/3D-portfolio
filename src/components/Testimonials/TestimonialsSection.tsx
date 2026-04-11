@@ -2,16 +2,31 @@ import { testimonials } from "../../constants";
 import { styles } from "../../styles";
 import TestimonialCard from "./TestimonialCard";
 import { useCarousel } from "../../hooks/useCarousel";
+import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 function TestimonialsSection() {
+  const { t, i18n } = useTranslation();
+  const translatedTestimonials = useMemo(
+    () =>
+      testimonials.map((testimonial) => ({
+        ...testimonial,
+        quote: t(testimonial.quoteKey),
+        author: t(testimonial.authorKey),
+        role: t(testimonial.roleKey),
+      })),
+    [i18n.language, t]
+  );
+
+  const isRtl = i18n.resolvedLanguage === "ar";
   const { viewportRef, trackRef, loopItems, cardWidth, gap, isDragging, bindings } =
-    useCarousel(testimonials, { gap: 24, speed: 22 });
+    useCarousel(translatedTestimonials, { gap: 24, speed: 22, direction: isRtl ? "rtl" : "ltr" });
 
   return (
     <section id="testimonials" className="mx-auto max-w-7xl px-5 sm:px-16 mt-40">
       <div data-aos="fade-up">
-        <p className={styles.sectionSubText}>What others say</p>
-        <h2 className={styles.sectionHeadText}>Testimonials.</h2>
+        <p className={styles.sectionSubText}>{t("testimonials.sub")}</p>
+        <h2 className={styles.sectionHeadText}>{t("testimonials.title")}</h2>
       </div>
 
       <div

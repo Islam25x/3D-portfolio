@@ -2,6 +2,7 @@ import { useState } from "react"
 import BallCanvas from "./BallCanvas"
 import { technologies } from "../../constants"
 import { styles } from "../../styles"
+import { useTranslation } from "react-i18next"
 
 type Technology = {
     name: string
@@ -41,12 +42,14 @@ function TechnologyItem({ technology, index }: TechnologyItemProps) {
 }
 
 function Tech() {
+    const { t } = useTranslation()
+
     return (
         <section id="Tech" className="mx-auto max-w-7xl px-5 sm:px-16 mt-20">
             <div className="text-center" data-aos="fade-up">
                 <h2 className={styles.heroSubText}>
-                    Technologies I use to build
-                    <span className="text-[#915EFF]"> scalable products</span>
+                    {t("tech.title")}
+                    <span className="text-[#915EFF]">{t("tech.highlight")}</span>
                 </h2>
             </div>
 

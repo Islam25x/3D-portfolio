@@ -3,7 +3,14 @@ import { services } from "../constants"
 import { styles } from "../styles"
 import Tilt from "react-parallax-tilt"
 import { Typewriter } from "react-simple-typewriter"
+import { useTranslation } from "react-i18next"
 function About() {
+    const { t } = useTranslation()
+    const typewriterWordsRaw = t("about.typewriter", { returnObjects: true })
+    const typewriterWords = Array.isArray(typewriterWordsRaw)
+        ? typewriterWordsRaw
+        : [String(typewriterWordsRaw)]
+
     return (
         <section id="about" className="mx-auto max-w-7xl px-5 sm:px-16">
             {/* Intro */}
@@ -12,17 +19,11 @@ function About() {
                 data-aos="fade-up"
                 data-aos-delay="200"
             >
-                <p className={styles.sectionSubText}>Introduction</p>
-                <h2 className={styles.sectionHeadText}>Overview.</h2>
+                <p className={styles.sectionSubText}>{t("about.sub")}</p>
+                <h2 className={styles.sectionHeadText}>{t("about.title")}</h2>
                 <p className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]">
                     <Typewriter
-                        words={[
-                            "I turn ideas into real web applications.",
-                            "Scalable SaaS dashboards built for production.",
-                            "Powered by React & TypeScript.",
-                            "Fast. Clean. User-focused.",
-                            "Let’s build something that actually works.",
-                        ]}
+                        words={typewriterWords}
                         loop={true}
                         cursor
                         cursorStyle="|"
@@ -37,7 +38,7 @@ function About() {
             <div className="mt-20 flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-10">
                 {services.map((service, i) => (
                     <div
-                        key={service.title}
+                        key={service.titleKey}
                         data-aos="zoom-in"
                         data-aos-delay={300 + i * 150}
                         className="w-full sm:w-[48%] md:w-[30%] lg:w-[28%] xl:w-[23%] p-2"
@@ -49,7 +50,7 @@ function About() {
                             transitionSpeed={450}
                             className="green-pink-gradient p-[1px] rounded-[20px] shadow-card w-full h-full"
                         >
-                            <Services {...service} />
+                            <Services icon={service.icon} title={t(service.titleKey)} />
                         </Tilt>
                     </div>
                 ))}

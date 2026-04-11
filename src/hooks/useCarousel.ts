@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 type CarouselOptions = {
   gap?: number;
   speed?: number;
+  direction?: "ltr" | "rtl";
 };
 
 type CarouselBindings = {
@@ -42,6 +43,10 @@ export function useCarousel<T>(
 ): CarouselHookReturn<T> {
   const gap = options.gap ?? DEFAULT_GAP;
   const speed = options.speed ?? DEFAULT_SPEED;
+  const direction = options.direction ?? "ltr";
+  const isRtl = direction === "rtl";
+  const transformSign = isRtl ? 1 : -1;
+  const dragSign = isRtl ? 1 : -1;
 
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -65,8 +70,8 @@ export function useCarousel<T>(
 
   const updateTransform = useCallback(() => {
     if (!trackRef.current) return;
-    trackRef.current.style.transform = `translate3d(${-positionRef.current}px, 0, 0)`;
-  }, []);
+    trackRef.current.style.transform = `translate3d(${transformSign * positionRef.current}px, 0, 0)`;
+  }, [transformSign]);
 
   const updateMeasurements = useCallback(() => {
     const viewport = viewportRef.current;
@@ -179,7 +184,7 @@ export function useCarousel<T>(
       if (!trackWidth) return;
       const delta = event.clientX - startXRef.current;
       positionRef.current = normalizePosition(
-        startPositionRef.current - delta,
+        startPositionRef.current + delta * dragSign,
         trackWidth
       );
       updateTransform();
