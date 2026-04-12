@@ -87,7 +87,7 @@ const Contact: React.FC = () => {
                 {/* Contact Form */}
                 <div
                     className="w-full md:w-1/2 bg-black-100 p-8 rounded-2xl order-2 md:order-1 relative z-10"
-                    data-aos="fade-up"
+                    data-aos="flip-right"
                 >
                     <p className={styles.sectionSubText}>{t("contact.sub")}</p>
                     <h3 className={styles.sectionHeadText}>{t("contact.title")}</h3>
@@ -142,7 +142,7 @@ const Contact: React.FC = () => {
                 {/* Earth Canvas */}
                 <div
                     className="w-full md:w-1/2 order-1 md:order-2 relative z-10"
-                    data-aos="flip-right"
+                    data-aos="fade-up"
                 >
                     <EarthCanvas isActive={inView} />
                 </div>
