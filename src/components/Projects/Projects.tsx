@@ -40,7 +40,7 @@ function Projects() {
                 <h2 className={styles.sectionHeadText}>{t("projects.title")}</h2>
 
                 {/* Typewriter paragraph */}
-                <p className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]">
+                <p className="mt-4 text-secondary lg:text-[17px] md:text-[17px] max-w-3xl text-[13px] leading-[30px]">
                     <Typewriter
                         words={typewriterWords}
                         loop={false}

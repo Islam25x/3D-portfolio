@@ -142,7 +142,7 @@ const Contact: React.FC = () => {
                 {/* Earth Canvas */}
                 <div
                     className="w-full md:w-1/2 order-1 md:order-2 relative z-10"
-                    data-aos="fade-left"
+                    data-aos="flip-right"
                 >
                     <EarthCanvas isActive={inView} />
                 </div>
