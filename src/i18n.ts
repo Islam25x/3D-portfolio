@@ -93,6 +93,11 @@ i18n.use(initReactI18next).init({
                         "Explore the work - and imagine yours next.",
                     ],
                     items: {
+                        finexa: {
+                            name: "Finexa",
+                            description:
+                                "Built a production-grade AI financial platform with feature-based architecture, React Query caching, dashboard analytics, voice-to-transaction workflows, OCR receipt parsing, and reusable TypeScript components.",
+                        },
                         homeless: {
                             name: "Homeless",
                             description:
@@ -254,6 +259,11 @@ i18n.use(initReactI18next).init({
                         "استكشف الأعمال - وتخيّل عملك التالي.",
                     ],
                     items: {
+                        finexa: {
+                            name: "فينكسا",
+                            description:
+                                "منصة مالية مدعومة بالذكاء الاصطناعي بمستوى إنتاجي، تم بناؤها باستخدام هيكلية Feature-Based، مع تخزين مؤقت للبيانات باستخدام React Query، ولوحات تحكم تحليلية، وسير عمل لتحويل الصوت إلى معاملات مالية، واستخراج بيانات الفواتير باستخدام OCR، ومكونات قابلة لإعادة الاستخدام باستخدام TypeScript.",
+                        },
                         homeless: {
                             name: "هوملس",
                             description:

@@ -17,6 +17,7 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
+import Finexa from "./Finexa.png";
 
 import homeless from "./Homeless.png";
 import Exclusive from "./e-commerce.png";
@@ -49,4 +50,5 @@ export {
   Atmoscan,
   VivaDecor,
   avatar,
+  Finexa
 };

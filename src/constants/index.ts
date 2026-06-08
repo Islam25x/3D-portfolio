@@ -18,6 +18,7 @@ import {
   Exclusive,
   Atmoscan,
   VivaDecor,
+  Finexa,
 } from "../assets";
 
 export const navLinks = [
@@ -149,6 +150,34 @@ const testimonials = [
 ];
 
 const projects = [
+  {
+    nameKey: "projects.items.finexa.name",
+    descriptionKey: "projects.items.finexa.description",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "typescript",
+        color: "green-text-gradient",
+      },
+      {
+        name: "react query",
+        color: "pink-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "zod",
+        color: "green-text-gradient",
+      },
+    ],
+    image: Finexa,
+    source_code_link: "https://sass-pearl.vercel.app/dashboard",
+  },
   {
     nameKey: "projects.items.homeless.name",
     descriptionKey: "projects.items.homeless.description",
